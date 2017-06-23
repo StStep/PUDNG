@@ -12,7 +12,7 @@ public class UnitBehavior : MonoBehaviour
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody>();
-        StartCoroutine(JumpAround());
+        //StartCoroutine(JumpAround());
     }
 
     // Update is called once per frame
@@ -21,7 +21,19 @@ public class UnitBehavior : MonoBehaviour
         ;
     }
 
-    IEnumerator JumpAround()
+    void LeftClick()
+    {
+        GameManager.instance.SelectItem(this.gameObject);
+    }
+
+    void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0)) {
+            LeftClick();
+        }
+    }
+
+        IEnumerator JumpAround()
     {
         while (true)
         {
